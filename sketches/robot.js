@@ -48,10 +48,7 @@ function() {
             mssg_y = message.payloadString
         }
       }
-      function robot(){
-
-      }
-
+   
     this.render = function() {
        
      
@@ -66,7 +63,18 @@ function() {
         mDrawRoundRect([0.75,0.75-0.25],[1.5,1-0.25],0.1)
         mStickFigure([1,0.78,2],0.02,false)
         mStickFigure([1.2,0.78,2],0.02,true)
-     
+        mDrawRect([0,0],[0.25,0.25])
+        mDrawRect([0,0.25],[0.25,0.5])
+        mDrawRect([0,0.5],[0.25,0.75])
+        mDrawRect([0,0.75],[0.25,1])
+        textHeight(this.mScale(0.08));
+        mText("ADHD",[0.02,0.15])
+        mText("Cold",[0.01,0.4])
+        textHeight(this.mScale(0.065))
+        mText("Asthma",[0.01,0.65])
+        textHeight(this.mScale(0.04))
+        mText("Cerebellum",[0.01,0.925])
+        mText("impairment",[0.01,0.875])
 
     }
 }
