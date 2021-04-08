@@ -1,7 +1,7 @@
 function() {
 
    
-    this.label = 'secnd_part';
+    this.label = 'first_part';
     this.x_bot = 100;
     this.y_bot = 300;
     this.x_top = 400;
@@ -11,7 +11,7 @@ function() {
     var mssg_y = "0" ;
     var x_ratio = 0  ;
     var y_ratio = 0  ;
-    var client = new Paho.MQTT.Client("192.168.1.5", 1884, "clientid2");
+    var client = new Paho.MQTT.Client("192.168.1.5", 1884, "clientid");
   
 
     client.onMessageArrived = onMessageArrived;
@@ -48,9 +48,6 @@ function() {
             mssg_y = message.payloadString
         }
       }
-      function robot(){
-
-      }
 
     this.render = function() {
        
@@ -61,12 +58,17 @@ function() {
         mDrawRect([x_ratio*2,y_ratio],[x_ratio*2+0.3,(y_ratio)+0.3])
         mDrawRect([0,0],[2,1])
         textHeight(this.mScale(0.1));
-        mText("Reception",[0.9,0.9-0.25])
-
-        mDrawRoundRect([0.75,0.75-0.25],[1.5,1-0.25],0.1)
-        mStickFigure([1,0.78,2],0.02,false)
-        mStickFigure([1.2,0.78,2],0.02,true)
-     
+        mText("Hospital",[0.9,0.9])
+        mDrawRoundRect([0.75,0.75],[1.5,1],0.1)
+        mLine([0,0.5],[2,0.5])
+        
+        mFillRect([0.25,0.225+0.075],[0.5,0.425-0.075])
+        mFillRect([0.75,0.225+0.075],[1.0,0.425-0.075])
+        mFillRect([1.25,0.225+0.075],[1.5,0.425-0.075])
+        mFillRect([1.75,0.225+0.075],[1.95,0.425-0.075])
+        mLine([0,0.15],[2,0.15])
+        //mStickFigure([1,0.65,2],0.01,false)
+        //mStickFigure([1.2,0.65,2],0.01,true)
 
     }
 }

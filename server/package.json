@@ -3,8 +3,13 @@
    "version": "0.0.1",
    "dependencies": {
       "body-parser": "1.5.x",
+      "dgram": "^1.0.1",
+      "dns": "^0.2.2",
       "express": "4.7.x",
       "formidable": "1.0.x",
+      "fs": "^0.0.1-security",
+      "net": "^1.0.2",
+      "websocket": "^1.0.33",
       "ws": "0.8.x"
    }
 }
