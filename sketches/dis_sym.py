@@ -54,7 +54,18 @@ while True:
         client.publish("tag/networktest", "MoveTank 0 0")
     elif x=="asthma":
         client.publish("tag/networktest","asthma")
-    elif x=="impaired motion"
+    elif x=="impaired motion":
+        turn_left(60)
+        y = 0.5
+        client.publish("tag/networktest","MoveTank 50 50")
+        time.sleep(y)
+        client.publish("tag/networktest", "MoveTank 0 0")
+        turn_right(40)
+        y = 0.5
+        client.publish("tag/networktest","MoveTank -50 -50")
+        time.sleep(y)
+        client.publish("tag/networktest", "MoveTank 0 0")
+        turn_right(20)
     else:
         client.publish("tag/networktest",x)
 
