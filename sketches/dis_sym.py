@@ -3,7 +3,9 @@ import random
 import time
 
 client = mqtt.Client( protocol=mqtt.MQTTv311,transport="websockets")
-client.connect("192.168.1.5", 1884, 60)
+client.connect("192.168.1.4", 1884, 60)
+
+
 def turn_left(x):
     client.publish("tag/networktest","MoveTank -50 50")
     time.sleep(x)
@@ -20,7 +22,7 @@ while True:
         exit()
     elif x=="ADHD":
         for i in range(0,10):
-            y = random.randint(10,50)
+            y = random.randint(30,50)
             
             o = random.randint(0,1)
             if o == 0:
@@ -34,7 +36,7 @@ while True:
             
             client.publish("tag/networktest", "MoveTank 0 0")
             time.sleep(0.8)
-    elif x=="cold":
+    elif x=="cough":
         client.publish("tag/networktest","cough")
     elif x=="right":
         y = int(input())
@@ -52,25 +54,48 @@ while True:
         client.publish("tag/networktest","MoveTank -50 -50")
         time.sleep(y)
         client.publish("tag/networktest", "MoveTank 0 0")
-    elif x=="asthma":
+    elif x=="wheezing":
         client.publish("tag/networktest","asthma")
-    elif x=="impaired motion":
-        turn_left(60)
-        y = 0.5
+    elif x=="impaired":
+        turn_left((60/20)*0.15)
+        y = 1
         client.publish("tag/networktest","MoveTank 50 50")
         time.sleep(y)
         client.publish("tag/networktest", "MoveTank 0 0")
-        turn_right(40)
-        y = 0.5
+        turn_right((40/20)*0.15)
+        y = 1
         client.publish("tag/networktest","MoveTank -50 -50")
         time.sleep(y)
         client.publish("tag/networktest", "MoveTank 0 0")
-        turn_right(20)
+        turn_right((20/20)*0.15)
+    elif x=="heartrate":
+        y = input()
+        client.publish("tag/heartb",y)
+    elif x=="body_temp":
+        y = input()
+        client("tag/temp",y)
+    elif x=="Epilepsy":
+        for i in range(0,4):
+            client.publish("tag/networktest","MoveTank 90 -90")
+            time.sleep(0.1)
+            client.publish("tag/networktest","MoveTank -90 90")
+            time.sleep(0.1)
+    elif x=="stroke":
+        for i in range(0,4):
+            client.publish("tag/networktest","MoveTank 50 3")
+            time.sleep(0.8)
+            client.publish("tag/networktest","MoveTank -50 3")
+            time.sleep(0.8)
+    elif x=="floor":
+        y = input()
+        client.publish("tag/floor",y)
+    elif x=="pneumonia":
+        y = random.randint(30,70)
+        client.publish("tag/lung",y)
+        client.publish("tag/networktest","cough")
+    elif x=="tts":
+        y = input()
+        client.publish("tag/networktest","tts:"+y)
+    
     else:
         client.publish("tag/networktest",x)
-
-
-    
-        
-
-
